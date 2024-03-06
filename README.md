@@ -12,3 +12,13 @@
     - 读取 client 侧打包生成的 index.html
     - 将 dom string 插入到 client index.html 中指定位置
     - 利用 express 启动 node.js 服务，进行访问
+
+# 调试
+```shell
+# 先打包
+pnpm run build
+
+# 生产环境部署
+# 已知问题 - react 水合报错
+pnpm run start
+```
