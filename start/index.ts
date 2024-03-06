@@ -12,13 +12,13 @@ async function main() {
   app.get('/', async (req, res) => {
     // @ts-ignore
     const render = (await import('../dist/server/server.js')).render;
-    const domString = render();
+    const { html } = render();
 
     const templatePath = path.join(process.cwd(), 'dist/client/index.html');
     const originTemplate = readFileSync(templatePath).toString();
-    const returnTemplate = originTemplate.replace('<!-- APP_OUTLET -->', domString);
+    const returnTemplate = originTemplate.replace('<!-- APP_OUTLET -->', html);
 
-    res.statusCode = 200;
+    res.status(200);
     res.setHeader('Content-Type', 'text/html');
     res.send(returnTemplate);
   });
